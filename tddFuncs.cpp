@@ -5,7 +5,8 @@
 using std::cout;
 using std::endl;
 
-std::string convertLineNumber(int lineNumber) {
+std::string convertLineNumber(int lineNumber) 
+{
   std::string retVal{};
   if (lineNumber > 0) 
     retVal += " line: " + std::to_string(lineNumber);
@@ -15,7 +16,8 @@ std::string convertLineNumber(int lineNumber) {
 void assertEquals(const char * const expected, 
 		  const char * const actual, 
 		  const std::string & message,
-		  int lineNumber) {
+		  int lineNumber)
+{
   std::string line = convertLineNumber(lineNumber);
   if ( std::string_view(expected) == actual ) {  // if they are equal
     cout << "PASSED: " << message << line <<  endl;;
