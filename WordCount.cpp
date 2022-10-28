@@ -53,13 +53,47 @@ int WordCount::getWordCount(const std::string & word) const
 {
 	// STUB
 
+	std::string word1;
+	word1 = this->makeValidWord(word);
 
-	return -1;
+
+	// std::vector<pair<std::string, int> > a;
+	// a.push_back(std::pair<word, 0>);
+	
+	size_t i = hash(word1);
+	
+	//table[i] = a;
+
+	for(int j = 0; j < table[i].size(); j++)
+	{
+		if(table[i].at(j).first == word1)
+		{
+			return table[i].at(j).second;
+		}
+		else
+		{
+			return 0;
+			
+		}
+	}
+
+	return counter;
 }
 	
 int WordCount::incrWordCount(const std::string & word) 
 {
 	// STUB
+
+	std::string word1;
+	word1 = this->makeValidWord(word);
+
+	size_t i = hash(word1);
+
+	std::pair<std::string, int> p1(word1, 1);    //will be useful later
+
+	table[i].push_back(p1);
+	
+	
 	return -1;
 }
 
