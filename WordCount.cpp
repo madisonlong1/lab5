@@ -43,7 +43,7 @@ int WordCount::getNumUniqueWords() const
 	int total = 0;
 	for(size_t i = 0; i < CAPACITY; i++)
 	{
-		total += table[i].size();  
+		total = total + table[i].size();  
 	}
 	return total;
 
@@ -64,54 +64,110 @@ int WordCount::getWordCount(const std::string & word) const
 	
 	//table[i] = a;
 
-	for(int j = 0; j < table[i].size(); j++)
+	for(size_t j = 0; j < table[i].size(); j++)
 	{
 		if(table[i].at(j).first == word1)
 		{
 			return table[i].at(j).second;
 		}
-		else
-		{
-			return 0;
-			
-		}
 	}
 
-	return counter;
+	return 0;
+
 }
 	
 int WordCount::incrWordCount(const std::string & word) 
 {
-	// STUB
+
 
 	std::string word1;
 	word1 = this->makeValidWord(word);
 
+	int wordCount = this->getWordCount(word1);
 	size_t i = hash(word1);
 
-	std::pair<std::string, int> p1(word1, 1);    //will be useful later
+	
 
-	table[i].push_back(p1);
-	
-	
+	if(wordCount == 0)
+	{
+		
+		std::pair<std::string, int> p1(word1, 1);    //will be useful later
+		table[i].push_back(p1);
+		return 1;
+	}
+	else
+	{
+		for(size_t j = 0; j < table[i].size(); j++)
+		{
+			if(table[i].at(j).first == word1)
+			{
+				table[i].at(j).second++;
+				return table[i].at(j).second;
+			}
+		}
+	}
+
 	return -1;
+	
 }
 
 int WordCount::decrWordCount(const std::string & word) 
 {
-	// STUB
+	std::string word1;
+	word1 = this->makeValidWord(word);
+
+	int wordCount = this->getWordCount(word1);
+	size_t i = hash(word1);
+
+	
+
+	if(wordCount == 0)
+	{
+		
+		return 0;
+	}
+	else
+	{
+		for(size_t j = 0; j < table[i].size(); j++)
+		{
+		if(table[i].at(j).first == word1)
+		{
+			if(table[i].at(j).second == 1)
+			{
+				//remove the vector completly from the hash function
+				vector<pair<std::string, int>>::iterator iterator;
+				for(iterator = table[i].begin(); iterator < table[i].end(); iterator++)
+				{
+					if(iterator->second == 1 && iterator->first == word1)
+					{
+						table[i].erase(iterator);
+					}
+				}
+				return 0;
+			}
+			else if(table[i].at(j).second > 1)
+			{
+				table[i].at(j).second--;
+				return table[i].at(j).second;
+			}
+			
+		}
+	}
+	}
+
+
 	return -2;
 }
 
 bool WordCount::isWordChar(char c) 
 {
-	// STUB
+
 	return isalpha(c);
 }
 
 std::string WordCount::makeValidWord(const std::string & word) 
 {
-	// STUB
+
 	std::string s = "";
 
 
