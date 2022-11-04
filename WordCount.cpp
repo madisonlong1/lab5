@@ -79,7 +79,6 @@ int WordCount::getWordCount(const std::string & word) const
 int WordCount::incrWordCount(const std::string & word) 
 {
 
-
 	std::string word1 = this->makeValidWord(word);    // You have to initialize and assign on the same line or else you get a bug
 
 	if(word1 == "")
@@ -174,6 +173,10 @@ std::string WordCount::makeValidWord(const std::string & word)
 
 	std::string s = "";
 
+	if(word == "")
+	{
+		return "";
+	}
 
 	int len = word.length();
 	

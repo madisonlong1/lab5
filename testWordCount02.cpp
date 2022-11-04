@@ -6,6 +6,7 @@ int main()
 {
 
     WordCount w;
+    WordCount wc2;
 
     w.incrWordCount("orange");
     w.incrWordCount("mango");
@@ -17,9 +18,9 @@ int main()
     w.incrWordCount("grape");
     w.decrWordCount("grape");
 
-    w.incrWordCount("--$$--");
+    //w.incrWordCount("--$$--");
     
-    w.decrWordCount("foo");
+    //w.decrWordCount("foo");
 
     std::cout<<"-------------------------------"<<std::endl;
     std::cout<<"testing Word Count 02"<<std::endl;
@@ -36,6 +37,17 @@ int main()
 
 
     //ASSERT_EQUALS(0, w.incrWordCount("--$$--"));
+
+    // ASSERT_EQUALS(1,wc2.incrWordCount("foO"));
+    // ASSERT_EQUALS(2,wc2.incrWordCount("foo"));
+    // ASSERT_EQUALS(1,wc2.incrWordCount("bAr"));
+    // ASSERT_EQUALS(2,wc2.incrWordCount("BaR"));
+    // ASSERT_EQUALS(1,wc2.incrWordCount("foo#bar"));
+    // ASSERT_EQUALS(2,wc2.incrWordCount("foo_bar-"));
+    // ASSERT_EQUALS(1,wc2.incrWordCount("'foo-bar-"));
+    // ASSERT_EQUALS(0,wc2.incrWordCount("--$$--"));
+    // ASSERT_EQUALS(7,wc2.getTotalWords());
+    // ASSERT_EQUALS(4,wc2.getNumUniqueWords());
     
     std::cout<<"-------------------------------"<<std::endl;
 
