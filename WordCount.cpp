@@ -80,8 +80,12 @@ int WordCount::incrWordCount(const std::string & word)
 {
 
 
-	std::string word1;
-	word1 = this->makeValidWord(word);
+	std::string word1 = this->makeValidWord(word);    // You have to initialize and assign on the same line or else you get a bug
+
+	if(word1 == "")
+	{
+		return 0;
+	}
 
 	int wordCount = this->getWordCount(word1);
 	size_t i = hash(word1);
@@ -124,7 +128,7 @@ int WordCount::decrWordCount(const std::string & word)
 	if(wordCount == 0)
 	{
 		
-		return 0;
+		return -1;
 	}
 	else
 	{

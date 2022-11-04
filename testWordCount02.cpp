@@ -5,7 +5,7 @@
 int main()
 {
 
-   WordCount w;
+    WordCount w;
 
     w.incrWordCount("orange");
     w.incrWordCount("mango");
@@ -17,31 +17,25 @@ int main()
     w.incrWordCount("grape");
     w.decrWordCount("grape");
 
-    w.incrWordCount("bc");
-    w.incrWordCount("ad");
-    w.incrWordCount("ad");
-    w.decrWordCount("ad");
-    w.decrWordCount("ad");
-
+    w.incrWordCount("--$$--");
+    
+    w.decrWordCount("foo");
 
     std::cout<<"-------------------------------"<<std::endl;
     std::cout<<"testing Word Count 02"<<std::endl;
 
     
-    ASSERT_EQUALS(0 , w.getWordCount("apple"));
-    ASSERT_EQUALS(1 , w.getWordCount("orange"));
-    ASSERT_EQUALS(2 , w.getWordCount("mango"));
-    ASSERT_EQUALS(4 , w.getWordCount("grape"));
-    ASSERT_EQUALS(1 , w.getWordCount("bc"));
-    ASSERT_EQUALS(0 , w.getWordCount("ad"));
-    
+    ASSERT_EQUALS("monkeys", w.makeValidWord("12mOnkEYs-$"));
+    ASSERT_EQUALS("paive", w.makeValidWord("Pa55ive"));
+    ASSERT_EQUALS("abc", w.makeValidWord("abc---"));
+    ASSERT_EQUALS("it---s", w.makeValidWord("it---s"));
+    ASSERT_EQUALS("", w.makeValidWord(""));
+    ASSERT_EQUALS("", w.makeValidWord("123()-*^$"));
+    ASSERT_EQUALS(-1, w.decrWordCount("foo"));
 
-    std::cout<<std::endl<<"Total number of words is : "<<w.getTotalWords()<<std::endl;
-    std::cout<<"Total unique words is : "<<w.getNumUniqueWords()<<std::endl;
+    //ASSERT_EQUALS(0, w.incrWordCount("--$$--"));
     
-
     std::cout<<"-------------------------------"<<std::endl;
-
 
     return 0;
 }

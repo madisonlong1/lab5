@@ -17,6 +17,7 @@ int main()
     ASSERT_EQUALS("test'input", w.makeValidWord("Test'input"));
     ASSERT_EQUALS("testinput", w.makeValidWord("Testinput12345678910"));
     ASSERT_EQUALS("t-e-s-t-i'n'p'u't", w.makeValidWord("''-t-e-s-t-i'n'p'u't123--'"));
+    ASSERT_EQUALS("", w.makeValidWord("--$$--"));
     std::cout<<"-------------------------------"<<std::endl;
 
 
