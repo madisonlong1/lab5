@@ -32,6 +32,8 @@ int main()
     ASSERT_EQUALS("", w.makeValidWord(""));
     ASSERT_EQUALS("", w.makeValidWord("123()-*^$"));
     ASSERT_EQUALS(-1, w.decrWordCount("foo"));
+    ASSERT_EQUALS(5, w.incrWordCount("grape"));
+
 
     //ASSERT_EQUALS(0, w.incrWordCount("--$$--"));
     
