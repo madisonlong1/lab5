@@ -1,7 +1,8 @@
 
 CXX=g++
 
-CXXFLAGS= -std=c++17 -Wall -g
+CXXFLAGS = -std=c++11 -Wall -Wextra -Werror
+#CXXFLAGS= -std=c++17 -Wall 
 
 BINARIES = testWordCount00 testWordCount01 testWordCount02
 
